@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<addon addon_id="salat" title="أوقات الصلاة" version_string="2.4" version_id="5" url="http://www.sali4ever.com/vbstyle/" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
+  <admin_navigation>
+    <navigation navigation_id="salat" parent_navigation_id="options" display_order="2" link="options/list/salat" admin_permission_id="option" debug_only="0" hide_no_children="0"/>
+  </admin_navigation>
+  <admin_permissions/>
+  <admin_style_properties/>
+  <admin_templates>
+    <template title="abaut_salat"><![CDATA[<div id="copyright" style="text-align:center;margin-top:20px;" dir="rtl">
+<img src="styles/default/xenforo/smilies/thumbsup.png"  alt='' />&nbsp;  
+<a href="http://www.xf-ar.com/" target="_blank" class="Tooltip" title="برمجة بوسعيد مصطفى">:: XF-AR FORUM ::</a> &nbsp;
+<img src="styles/default/xenforo/smilies/thumbsup.png"  alt='' />
+</div>]]></template>
+    <template title="salat"><![CDATA[<div id="copyright" style="text-align:center;margin-top:20px;" dir="rtl">
+هاك أوقات الصلاة الإصدار الثاني للـ XenForo 
+<br />
+للإطلاع على آخر التحديثات للهاك يرجى متابعة الموقع التالي<br /><br />
+<img src="styles/default/xenforo/smilies/thumbsup.png"  alt='' />&nbsp;  
+<a href="http://www.sali4ever.com/vbstyle" target="_blank" class="Tooltip" title="برمجة بوسعيد مصطفى">خواطر ستايل</a> &nbsp;
+<img src="styles/default/xenforo/smilies/thumbsup.png"  alt='' />
+</div>]]></template>
+  </admin_templates>
+  <code_events/>
+  <code_event_listeners>
+    <listener event_id="template_create" execute_order="10" callback_class="Salat_EventListener_Listen" callback_method="template_create" active="1" description="Template create"/>
+    <listener event_id="template_hook" execute_order="10" callback_class="Salat_EventListener_Listen" callback_method="salatte" active="1" description="خيارات أوقات الصلاة"/>
+  </code_event_listeners>
+  <cron/>
+  <email_templates/>
+  <optiongroups>
+    <group group_id="salat" display_order="1" debug_only="0"/>
+    <option option_id="about_salat" edit_format="template" data_type="string" can_backup="1">
+      <default_value></default_value>
+      <edit_format_params>abaut_salat</edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="salat" display_order="800"/>
+    </option>
+    <option option_id="higria_ddday" edit_format="spinbox" data_type="numeric" can_backup="1">
+      <default_value>1</default_value>
+      <edit_format_params>size=2
+max=3
+min=0</edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="salat" display_order="530"/>
+    </option>
+    <option option_id="higria_ddmonth" edit_format="spinbox" data_type="numeric" can_backup="1">
+      <default_value>1</default_value>
+      <edit_format_params>size=2
+max=3
+min=0</edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="salat" display_order="540"/>
+    </option>
+    <option option_id="higri_date" edit_format="onoff" data_type="boolean" can_backup="1">
+      <default_value>1</default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="salat" display_order="520"/>
+    </option>
+    <option option_id="posit" edit_format="select" data_type="string" can_backup="1">
+      <default_value>2</default_value>
+      <edit_format_params>1={xen:phrase top_sidbr}
+2={xen:phrase bottom_usr}
+3={xen:phrase bottom_sidbr}
+4={xen:phrase top_frm}
+5={xen:phrase bottom_frm}
+6={xen:phrase top_nav}</edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="salat" display_order="101"/>
+    </option>
+    <option option_id="prayer_enable_global" edit_format="onoff" data_type="boolean" can_backup="1">
+      <default_value>1</default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="salat" display_order="1"/>
+    </option>
+    <option option_id="prayer_imsak" edit_format="onoff" data_type="boolean" can_backup="1">
+      <default_value>0</default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="salat" display_order="500"/>
+    </option>
+    <option option_id="prayer_jam3" edit_format="onoff" data_type="boolean" can_backup="1">
+      <default_value>0</default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="salat" display_order="210"/>
+    </option>
+    <option option_id="prayer_latitude" edit_format="textbox" data_type="numeric" can_backup="1">
+      <default_value>21.4200</default_value>
+      <edit_format_params>size=15</edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="salat" display_order="300"/>
+    </option>
+    <option option_id="prayer_longitude" edit_format="textbox" data_type="numeric" can_backup="1">
+      <default_value>39.8300</default_value>
+      <edit_format_params>size=15</edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="salat" display_order="310"/>
+    </option>
+    <option option_id="prayer_mathhab" edit_format="radio" data_type="string" can_backup="1">
+      <default_value>3</default_value>
+      <edit_format_params>1={xen:phrase mathhab_ja3fri}
+2={xen:phrase mathhab_hanafi}
+3={xen:phrase mathhab_shafi3i}</edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="salat" display_order="200"/>
+    </option>
+    <option option_id="prayer_offset" edit_format="select" data_type="string" can_backup="1">
+      <default_value>0</default_value>
+      <edit_format_params>12=+12
+11=+11
+10=+10
+9.5=+9.5
+9=+9
+8=+8
+7=+7
+6=+6
+5.5=+5.5
+5=+5
+4.5=+4.5
+4=+4
+3.5=+3.5
+3=+3
+2=+2
+1=+1
+0=بدون تغيير
+-1=-1
+-2=-2
+-3=-3
+-3.5=-3.5
+-4=-4
+-5=-5
+-6=-6
+-7=-7
+-8=-8
+-9=-9
+-10=-10
+-11=-11
+-12=-12</edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="salat" display_order="320"/>
+    </option>
+    <option option_id="tim_date" edit_format="onoff" data_type="boolean" can_backup="1">
+      <default_value>1</default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="salat" display_order="510"/>
+    </option>
+    <option option_id="tit_prayer" edit_format="textbox" data_type="string" can_backup="1">
+      <default_value>أوقات الصلاة حسب الحرم المكي</default_value>
+      <edit_format_params>size=30</edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="salat" display_order="100"/>
+    </option>
+  </optiongroups>
+  <permissions>
+    <permission_groups/>
+    <permissions/>
+    <interface_groups/>
+  </permissions>
+  <phrases>
+    <phrase title="admin_navigation_salat" version_id="3" version_string="2.0.1"><![CDATA[مواقيت الصلاة]]></phrase>
+    <phrase title="bottom_frm" version_id="2" version_string="2.0.0"><![CDATA[أسفل الأقسام]]></phrase>
+    <phrase title="bottom_sidbr" version_id="2" version_string="2.0.0"><![CDATA[أسفل الشريط الجانبي]]></phrase>
+    <phrase title="bottom_usr" version_id="2" version_string="2.0.0"><![CDATA[أسفل منطقة العضو]]></phrase>
+    <phrase title="mathhab_hanafi" version_id="2" version_string="2.0.0"><![CDATA[المذهب الحنفي]]></phrase>
+    <phrase title="mathhab_ja3fri" version_id="2" version_string="2.0.0"><![CDATA[المذهب الجعفري]]></phrase>
+    <phrase title="mathhab_shafi3i" version_id="2" version_string="2.0.0"><![CDATA[المذهب الشافعي]]></phrase>
+    <phrase title="month_shoual" version_id="3" version_string="2.0.1"><![CDATA[شوال]]></phrase>
+    <phrase title="option_about_salat" version_id="1" version_string="1.0.0"><![CDATA[حول هاك أوقات الصلاة]]></phrase>
+    <phrase title="option_about_salat_explain" version_id="1" version_string="1.0.0"><![CDATA[]]></phrase>
+    <phrase title="option_group_salat" version_id="1" version_string="1.0.0"><![CDATA[خيارات أوقات الصلاة]]></phrase>
+    <phrase title="option_group_salat_description" version_id="1" version_string="1.0.0"><![CDATA[مواقيت الصلاة بدقة حسب بلدك]]></phrase>
+    <phrase title="option_higria_ddday" version_id="2" version_string="2.0.0"><![CDATA[زيادة أو نقصان التاريخ الهجري]]></phrase>
+    <phrase title="option_higria_ddday_explain" version_id="3" version_string="2.0.1"><![CDATA[لضبط التصحيح في التاريخ الهجري بزيادة يوم أو أكثر و نقصانه]]></phrase>
+    <phrase title="option_higria_ddmonth" version_id="3" version_string="2.0.1"><![CDATA[تقديم او تأخير الشهر]]></phrase>
+    <phrase title="option_higria_ddmonth_explain" version_id="3" version_string="2.0.1"><![CDATA[لضبط التصحيح في التاريخ الهجري بدخول الشهر الهجري من 29 او 30]]></phrase>
+    <phrase title="option_higri_date" version_id="2" version_string="2.0.0"><![CDATA[إظهار التاريخ الهجري]]></phrase>
+    <phrase title="option_higri_date_explain" version_id="3" version_string="2.0.1"><![CDATA[لإظهار التاريخ الهجري أسفل المواقيت]]></phrase>
+    <phrase title="option_posit" version_id="1" version_string="1.0.0"><![CDATA[مكان العرض]]></phrase>
+    <phrase title="option_posit_explain" version_id="3" version_string="2.0.1"><![CDATA[هذا الخيار يسمح لك بتحديد مكان عرض المواقيت في الشريط الجانبي للمنتدى
+<br /><em><strong>ملاحظة :</strong> قد لا يختلف وضح المواقيت بالاعلى  أو بالأسفل، هذا الخيار مستحسن للذين لديهم أكواد أخرى في تلك المناطق</em>]]></phrase>
+    <phrase title="option_prayer_enable_global" version_id="1" version_string="1.0.0"><![CDATA[تفعيل المنتج]]></phrase>
+    <phrase title="option_prayer_enable_global_explain" version_id="3" version_string="2.0.1"><![CDATA[فعل هذا الخيار إذا كنت تريد تفعيل المنتج و العكس صحيح <img src="styles/default/xenforo/smilies/biggrin.png"  alt='' />]]></phrase>
+    <phrase title="option_prayer_imsak" version_id="2" version_string="2.0.0"><![CDATA[تفعيل الإمساك]]></phrase>
+    <phrase title="option_prayer_imsak_explain" version_id="3" version_string="2.0.1"><![CDATA[لتفعيل وقت الإمساك خاص برمضان فقط]]></phrase>
+    <phrase title="option_prayer_jam3" version_id="1" version_string="1.0.0"><![CDATA[جمع الصلوات]]></phrase>
+    <phrase title="option_prayer_jam3_explain" version_id="3" version_string="2.0.1"><![CDATA[في بعض المذاهب الإسلامية يجوز الجمع بين صلاتي الظهر والعصر، وبين صلاتي المغرب والعشاء، إذا أردت عرض النتائج على هيئة الجمع فعل هذا الخيار]]></phrase>
+    <phrase title="option_prayer_latitude" version_id="1" version_string="1.0.0"><![CDATA[خط العرض]]></phrase>
+    <phrase title="option_prayer_latitude_explain" version_id="3" version_string="2.0.1"><![CDATA[ضع هنا رقم خط العرض للكرة الأرضية الذي يمر بمنطقتك، سيتم حساب توقيت الصلاة حسب الرقم الذي تضعه هنا. يمكنك الحصول على هذا الرقم  من <a href="http://maps.google.com/">خرائط جوجل</a>  أو من الموقع التالي:
+<br />
+<a href="http://www.islamicfinder.org/index.php?lang=arabic">www.islamicfinder.org</a>]]></phrase>
+    <phrase title="option_prayer_longitude" version_id="1" version_string="1.0.0"><![CDATA[خط الطول]]></phrase>
+    <phrase title="option_prayer_longitude_explain" version_id="3" version_string="2.0.1"><![CDATA[ضع هنا رقم خط الطول للكرة الأرضية الذي يمر بمنطقتك، سيتم حساب توقيت الصلاة حسب الرقم الذي تضعه هنا. يمكنك الحصول على هذا الرقم  من <a href="http://maps.google.com/">خرائط جوجل</a>  أو من الموقع التالي:
+<br />
+<a href="http://www.islamicfinder.org/index.php?lang=arabic">www.islamicfinder.org</a>]]></phrase>
+    <phrase title="option_prayer_mathhab" version_id="1" version_string="1.0.0"><![CDATA[المذهب الإسلامي]]></phrase>
+    <phrase title="option_prayer_mathhab_explain" version_id="3" version_string="2.0.1"><![CDATA[اختر المذهب الذي سوف يتم حساب توقيت الصلوات عليه. المذهب الشافعي هو التوقيت الإعتيادي، أما المذهب الحنفي يختلف في توقيت صلاة العصر، والمذهب الجعفري يختلف في توقيت صلاة المغرب.]]></phrase>
+    <phrase title="option_prayer_offset" version_id="1" version_string="1.0.0"><![CDATA[بلد التوقيت]]></phrase>
+    <phrase title="option_prayer_offset_explain" version_id="3" version_string="2.0.1"><![CDATA[لتتجنب بعض الحالات التي قد تحدث بسبب فارق التوقيت بين بلدك وتوقيت السيرفر، بإمكانك من هنا ضبط الوقت.]]></phrase>
+    <phrase title="option_tim_date" version_id="2" version_string="2.0.0"><![CDATA[إظهار التاريخ و الوقت]]></phrase>
+    <phrase title="option_tim_date_explain" version_id="3" version_string="2.0.1"><![CDATA[لإظهار التاريخ الميلادي و الوقت أعلى مواقيت الصلاة]]></phrase>
+    <phrase title="option_tit_prayer" version_id="1" version_string="1.0.0"><![CDATA[العنوان الذي تريد عرضه]]></phrase>
+    <phrase title="option_tit_prayer_explain" version_id="3" version_string="2.0.1"><![CDATA[بإمكانك من هنا وضع عنوان منطقتك أو أي عنوان و الذي تريد عرضه أعلى القطعة بالسايد بار ... <br /> <strong>مثال</strong>: ' أوقات الصلاة  بمنطقة الجزائر ']]></phrase>
+    <phrase title="prayer_time_asr" version_id="2" version_string="2.0.0"><![CDATA[العصر:]]></phrase>
+    <phrase title="prayer_time_esha" version_id="2" version_string="2.0.0"><![CDATA[العشاء:]]></phrase>
+    <phrase title="prayer_time_eshaain" version_id="2" version_string="2.0.0"><![CDATA[العشائين:]]></phrase>
+    <phrase title="prayer_time_fajr" version_id="2" version_string="2.0.0"><![CDATA[الفجر:]]></phrase>
+    <phrase title="prayer_time_goroub" version_id="2" version_string="2.0.0"><![CDATA[الغروب:]]></phrase>
+    <phrase title="prayer_time_imsak" version_id="2" version_string="2.0.0"><![CDATA[الإمساك:]]></phrase>
+    <phrase title="prayer_time_maghrib" version_id="2" version_string="2.0.0"><![CDATA[المغرب:]]></phrase>
+    <phrase title="prayer_time_shrouk" version_id="2" version_string="2.0.0"><![CDATA[الشروق:]]></phrase>
+    <phrase title="prayer_time_zuhr" version_id="2" version_string="2.0.0"><![CDATA[الظهر:]]></phrase>
+    <phrase title="prayer_time_zuhreen" version_id="2" version_string="2.0.0"><![CDATA[الظهرين:]]></phrase>
+    <phrase title="top_frm" version_id="2" version_string="2.0.0"><![CDATA[أعلى الأقسام]]></phrase>
+    <phrase title="top_nav" version_id="2" version_string="2.0.0"><![CDATA[أسفل الناف بار]]></phrase>
+    <phrase title="top_sidbr" version_id="2" version_string="2.0.0"><![CDATA[أعلى الشريط الجانبي]]></phrase>
+    <phrase title="vbphrase_ain_prayer_time" version_id="1" version_string="1.0.0"><![CDATA[أوقات الصلاة]]></phrase>
+  </phrases>
+  <route_prefixes/>
+  <style_properties/>
+  <templates>
+    <template title="salat" version_id="3" version_string="2.1"><![CDATA[<!-- block: Prayer_Time --> 
+        <div class="section"> 
+            <div class="secondaryContent"> 
+                <h3><span class="Tooltip" title="خط الطول: {$xenOptions.prayer_longitude} خط العرض: {$xenOptions.prayer_latitude} ">{$xenOptions.tit_prayer}</span></h3>
+                <div class="pairsJustified"> 
+<xen:if is="{$xenOptions.tim_date} == 1">
+<xen:include template="salat_Clock" />
+</xen:if>
+<xen:if is="{$xenOptions.prayer_jam3} == 1">
+                    <xen:if is="{$xenOptions.prayer_imsak} == 1">  
+                    <dl><dt>{xen:phrase prayer_time_imsak}</dt> 
+                        <dd>{$imsak_prayer}</dd></dl></xen:if>
+                    <dl><dt>{xen:phrase prayer_time_fajr}</dt> 
+                        <dd>{$fajr_prayer}</dd></dl> 
+                    <dl><dt>{xen:phrase prayer_time_shrouk}</dt> 
+                        <dd>{$shor}</dd></dl> 
+                    <dl><dt>{xen:phrase prayer_time_zuhreen}</dt> 
+                        <dd>{$zuhr_prayer}</dd></dl> 
+                    <xen:if is="{$xenOptions.prayer_mathhab} == 1">
+                    <dl><dt>{xen:phrase prayer_time_goroub}</dt>
+                        <dd>{$goroub_prayer}</dd></dl></xen:if>
+                    <dl><dt>{xen:phrase prayer_time_eshaain}</dt> 
+                        <dd>
+                        <xen:if is="{$xenOptions.prayer_mathhab} == 1">
+                        {$eshaain}<xen:else />{$maghrib_prayer}</xen:if></dd></dl>             
+<xen:else />
+
+                    <xen:if is="{$xenOptions.prayer_imsak} == 1">  
+                    <dl><dt>{xen:phrase prayer_time_imsak}</dt> 
+                        <dd>{$imsak_prayer}</dd></dl></xen:if>
+                    <dl><dt><span class="Tooltip" title="{$fajr_prayer}">{xen:phrase prayer_time_fajr}</span></dt> 
+                        <dd>{$fajr_prayer}</dd></dl> 
+                    <dl><dt><span class="Tooltip" title="{$shor}">{xen:phrase prayer_time_shrouk}</span></dt> 
+                        <dd>{$shor}</dd></dl> 
+                    <dl><dt><span class="Tooltip" title="{$zuhr_prayer}">{xen:phrase prayer_time_zuhr}</span></dt> 
+                        <dd>{$zuhr_prayer}</dd></dl> 
+                    <dl><dt><span class="Tooltip" title="{$asr_prayer}">{xen:phrase prayer_time_asr}</span></dt> 
+                        <dd>
+                        <xen:if is="{$xenOptions.prayer_mathhab} == 2">
+                        {$asr_prayer2}<xen:else />{$asr_prayer}</xen:if></dd></dl>
+                        <xen:if is="{$xenOptions.prayer_mathhab} == 1">
+                    <dl><dt>{xen:phrase prayer_time_goroub}</dt>
+                        <dd>{$goroub_prayer}</dd></dl></xen:if>
+                    <dl><dt><span class="Tooltip" title="{$maghrib_prayer}">{xen:phrase prayer_time_maghrib}</span></dt> 
+                        <dd>
+                        <xen:if is="{$xenOptions.prayer_mathhab} == 1">
+                        {$eshaain}<xen:else />{$maghrib_prayer}</xen:if></dd></dl>
+                    <dl><dt><span class="Tooltip" title="{$esha_prayer}">{xen:phrase prayer_time_esha}</span></dt> 
+                        <dd>{$esha_prayer}</dd></dl>
+                    </xen:if>
+
+
+<xen:if is="{$xenOptions.higri_date} == 1">
+<xen:include template="salat_Higri" />
+</xen:if>
+
+                </div> 
+            </div> 
+        </div> 
+<!-- end block: Prayer_Time -->]]></template>
+    <template title="salat2" version_id="3" version_string="2.0.1"><![CDATA[<style type="text/css">
+table.dataTable {margin: 0;}
+.heading {margin-bottom: 0;}
+</style>
+<div class="sectionMain"> 	
+<h3 class="subHeading heading">
+            {$xenOptions.tit_prayer}
+        </h3>
+
+<table class="dataTable">
+    <tbody>
+    <tr class="dataRow">
+<xen:if is="{$xenOptions.prayer_imsak} == 1">
+        <th>{xen:phrase prayer_time_imsak}</th></xen:if>
+        <th>{xen:phrase prayer_time_fajr}</th>
+        <th>{xen:phrase prayer_time_shrouk}</th>
+        <th>{xen:phrase prayer_time_zuhr}</th>
+        <th>{xen:phrase prayer_time_asr}</th>
+<xen:if is="{$xenOptions.prayer_mathhab} == 1">
+        <th>{xen:phrase prayer_time_goroub}</th></xen:if>
+        <th>{xen:phrase prayer_time_maghrib}</th>
+        <th>{xen:phrase prayer_time_esha}</th>
+    </tr>
+        <tr class="dataRow">
+<xen:if is="{$xenOptions.prayer_imsak} == 1">
+    <td>{$imsak_prayer}</td></xen:if>
+    <td>{$fajr_prayer}</td>
+    <td>{$shor}</td>
+    <td>{$zuhr_prayer}</td>
+    <td><xen:if is="{$xenOptions.prayer_mathhab} == 2">
+{$asr_prayer2}<xen:else />{$asr_prayer}</xen:if></td>
+<xen:if is="{$xenOptions.prayer_mathhab} == 1">
+    <td>{$goroub_prayer}</td></xen:if>
+    <td><xen:if is="{$xenOptions.prayer_mathhab} == 1">
+{$eshaain}<xen:else />{$maghrib_prayer}</xen:if></td>
+    <td>{$esha_prayer}</td>
+</tr>
+</tbody>
+</table>
+<br />
+<div class="page_section">
+    <div style="text-align:center">
+<xen:if is="{$xenOptions.tim_date} == 1">
+<xen:include template="salat_Clock" />
+</xen:if>
+    <xen:if is="{$xenOptions.higri_date} == 1">
+<xen:include template="salat_Higri" />
+</xen:if>
+</div>    
+</div></div>]]></template>
+    <template title="salat_Clock" version_id="5" version_string="2.4"><![CDATA[<dl class="time muted" style="text-align:center">
+<span id="clock">{xen:phrase loading}...</span>
+<script type="text/javascript"> <!--
+function refrClock() 
+{ 
+var d=new Date(); 
+var s=d.getSeconds(); 
+var m=d.getMinutes(); 
+var h=d.getHours(); 
+var day=d.getDay(); 
+var date=d.getDate(); 
+var month=d.getMonth(); 
+var year=d.getFullYear(); 
+var days=new Array("{xen:phrase day_sunday}","{xen:phrase day_monday}","{xen:phrase day_tuesday}","{xen:phrase day_wednesday}","{xen:phrase day_thursday}","{xen:phrase day_friday}","{xen:phrase day_saturday}"); 
+var months=new Array("{xen:phrase month_1}", "{xen:phrase month_2}","{xen:phrase month_3}","{xen:phrase month_4}","{xen:phrase month_5}","{xen:phrase month_6}","{xen:phrase month_7}","{xen:phrase month_8}","{xen:phrase month_9}","{xen:phrase month_10}","{xen:phrase month_11}","{xen:phrase month_12}"); 
+var am_pm; 
+if (s<10) {s="0" + s} 
+if (m<10) {m="0" + m} 
+if (h>24) {h-=24;am_pm = "{xen:phrase time_pm_upper}"} 
+else {am_pm="{xen:phrase time_am_upper}"} 
+if (h<10) {h="0" + h} 
+document.getElementById("clock").innerHTML=days[day] + " " + date + " " + months[month] + " " + year + " - " + h + ":" + m + "&nbsp;&nbsp;"; //+ ":" + s;// + " " + am_pm; 
+setTimeout("refrClock()",1000); 
+} 
+refrClock(); 
+--></script> 
+<!-- / clock hack -->
+</dl><br />]]></template>
+    <template title="salat_Higri" version_id="3" version_string="2.0.1"><![CDATA[<br />
+<!-- Hijri hack -->
+<dl class="time muted" style="text-align:center">
+<script type="text/javascript"><!--
+var fixd;
+function isGregLeapYear(year)
+{
+return year%4 == 0 && year%100 != 0 || year%400 == 0;
+}
+
+function gregToFixed(year, month, day)
+{
+var a = Math.floor((year - 1) / 4);
+var b = Math.floor((year - 1) / 100);
+var c = Math.floor((year - 1) / 400);
+var d = Math.floor((367 * month - 362) / 12);
+if (month <= 2)
+e = 0;
+else if (month > 2 && isGregLeapYear(year))
+e = -1;
+else
+e = -2;
+return 1 - 1 + 365 * (year - 1) + a - b + c + d + e + day;
+}
+function Hijri(year, month, day)
+{
+this.year = year;
+this.month = month;
+this.day = day;
+this.toFixed = hijriToFixed;
+this.toString = hijriToString;
+}
+function hijriToFixed()
+{
+return this.day + Math.ceil(29.5 * (this.month - 1)) + (this.year - 1) * 354 +
+Math.floor((3 + 11 * this.year) / 30) + 227015 - 1;
+}
+function hijriToString()
+{
+var months = new Array("محرم","صفر","ربيع الأول","ربيع الثانى","جمادى الأول","جمادى الثانى","رجب","شعبان","رمضان","{xen:phrase month_shoual}","ذو القعدة","ذو الحجة");
+return this.day + " " + months[this.month - 1]+ " " + this.year;
+}
+function fixedToHijri(f)
+{
+var i=new Hijri(1100, 1, 1);
+i.year = Math.floor((30 * (f - 227015) + 10646) / 10631);
+var i2=new Hijri(i.year, 1, 1);
+var m = Math.ceil((f - 29 - i2.toFixed()) / 29.5) + {$xenOptions.higria_ddmonth};
+i.month = Math.min(m, 12);
+i2.year = i.year;
+i2.month = i.month;
+i2.day = 1;
+i.day = f - i2.toFixed() + {$xenOptions.higria_ddday};
+return i;
+}
+var tod=new Date();
+var weekday=new Array("الأحد","الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت");
+var monthname=new Array("[جانفي","فيفري","مارس","إبريل","ماي","جوان","جويلية","أوت","سبتمبر","أكتوبر","نوفمبر","ديسمبر");
+var y = tod.getFullYear();
+var m = tod.getMonth();
+var d = tod.getDate();
+var dow = tod.getDay();
+//document.write(weekday[dow]);
+m++;
+fixd=gregToFixed(y, m, d);
+var h=new Hijri(1421, 11, 28);
+h = fixedToHijri(fixd);
+document.write(h.toString());
+--></script></dl>]]></template>
+  </templates>
+  <bb_code_media_sites/>
+  <template_modifications/>
+</addon>
