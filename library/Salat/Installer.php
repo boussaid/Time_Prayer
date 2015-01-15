@@ -22,14 +22,12 @@ class Salat_Installer
         }
     }
 
-    public static function uninstall()
-    {
-        public static function uninstall()
+     public static function uninstall()
         {
             try {
                 $db = XenForo_Application::getDb();
                 $db->query("ALTER TABLE xf_user_option DROP salat");
                 } catch (Zend_Db_Exception $e) {}
         }
-    }
+    
 }
