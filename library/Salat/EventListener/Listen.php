@@ -56,7 +56,9 @@ class Salat_EventListener_Listen
             }
             if($hookName == 'account_wrapper_sidebar_settings' && $Permissionsalat)
             {
-                $contents .= $template->create('salat_account_wrapper');
+                $params = $template->getParams();
+                $hookParams['selectedKey'] = $params['selectedKey'];
+                $contents .= $template->create('salat_account_wrapper', $hookParams);
             }
             if($hookName == 'navigation_visitor_tab_links1' && $Permissionsalat)
             {
